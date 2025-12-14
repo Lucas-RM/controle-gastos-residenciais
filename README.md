@@ -4,13 +4,13 @@ Sistema para gerenciamento de gastos e receitas residenciais com controle por pe
 
 ## 📋 Índice
 
-- [Tecnologias](#tecnologias)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Pré-requisitos](#pré-requisitos)
-- [Configuração](#configuração)
-- [Executando o Projeto](#executando-o-projeto)
-- [Endpoints da API](#endpoints-da-api)
-- [Solução de problemas](#solução-de-problemas)
+- [Tecnologias](#-tecnologias)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Pré-requisitos](#-pré-requisitos)
+- [Configuração](#-configuração)
+- [Executando o Projeto](#-executando-o-projeto)
+- [Endpoints da API](#-endpoints-da-api)
+- [Solução de problemas](#-solução-de-problemas)
 
 ## 🛠 Tecnologias
 

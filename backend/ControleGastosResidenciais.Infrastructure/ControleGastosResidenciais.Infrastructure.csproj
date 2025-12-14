@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ControleGastosResidenciais.Application\ControleGastosResidenciais.Application.csproj" />
+    <ProjectReference Include="..\ControleGastosResidenciais.Domain\ControleGastosResidenciais.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

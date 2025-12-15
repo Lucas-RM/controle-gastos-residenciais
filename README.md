@@ -276,6 +276,30 @@ dotnet ef database update --project ../ControleGastosResidenciais.Infrastructure
 
 Altere a porta no arquivo `Properties/launchSettings.json` ou encerre o processo que está usando a porta.
 
+## Arquivos do Postman
+
+Os arquivos do Postman estão disponíveis em [Postman Collection](https://github.com/Lucas-RM/controle-gastos-residenciais/tree/main/Postman%20Collection).
+
+### Conteúdo da Pasta
+
+> A pasta "Postman Collection" contém:
+
+- **Coleções do Postman:** Arquivos `.json` que incluem todas as requisições configuradas para os endpoints da API.
+
+- **Documentação de Requisições:** Parâmetros, corpos de requisição e exemplos de respostas para facilitar o teste e a validação da API.
+
+### Como Usar
+
+1. Baixe os arquivos da pasta "Postman Collection".
+
+2. Importe os arquivos no Postman:
+
+    - Abra o Postman.
+    - Clique em "Import" no canto superior esquerdo.
+    - Selecione o arquivo `.json` baixado.
+
+3. Utilize as requisições configuradas para testar a API com facilidade.
+
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

@@ -55,14 +55,21 @@ public class TransacaoService : ITransacaoService
 
         var transacaoCriada = await _transacaoRepository.CriarAsync(transacao);
 
+        // Buscar a transação criada com relacionamentos para retornar dados completos
+        var transacaoCompleta = await _transacaoRepository.ObterPorIdAsync(transacaoCriada.Id);
+        if (transacaoCompleta == null)
+            throw new EntidadeNaoEncontradaException($"Transação criada não foi encontrada.");
+
         return new TransacaoDto
         {
-            Id = transacaoCriada.Id,
-            Descricao = transacaoCriada.Descricao,
-            Valor = transacaoCriada.Valor,
-            Tipo = transacaoCriada.Tipo,
-            CategoriaId = transacaoCriada.CategoriaId,
-            PessoaId = transacaoCriada.PessoaId
+            Id = transacaoCompleta.Id,
+            Descricao = transacaoCompleta.Descricao,
+            Valor = transacaoCompleta.Valor,
+            Tipo = transacaoCompleta.Tipo,
+            CategoriaId = transacaoCompleta.CategoriaId,
+            PessoaId = transacaoCompleta.PessoaId,
+            CategoriaDescricao = transacaoCompleta.Categoria?.Descricao,
+            PessoaNome = transacaoCompleta.Pessoa?.Nome
         };
     }
 

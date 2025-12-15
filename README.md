@@ -1,6 +1,6 @@
 # Sistema de Controle de Gastos Residenciais
 
-Sistema para gerenciamento de gastos e receitas residenciais com controle por pessoa e categoria, desenvolvido em .NET 7.0 seguindo os princípios de Clean Architecture e SOLID.
+Sistema completo para gerenciamento de gastos e receitas residenciais com controle por pessoa e categoria. O projeto é composto por uma API backend desenvolvida em .NET 7.0 seguindo os princípios de Clean Architecture e SOLID, e uma interface web frontend desenvolvida em React 18 com TypeScript e Tailwind CSS.
 
 ## 📋 Índice
 
@@ -15,15 +15,28 @@ Sistema para gerenciamento de gastos e receitas residenciais com controle por pe
 
 ## 🛠 Tecnologias
 
+### Backend
 - **.NET 7.0**
 - **Entity Framework Core 7.0**
 - **SQL Server**
 - **FluentValidation**
 - **Swagger/OpenAPI**
 
+### Frontend
+- **React 18**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS 3**
+- **React Router DOM**
+- **Axios**
+- **Lucide Icons**
+- **React Hot Toast**
+
 ## 📁 Estrutura do Projeto
 
-O projeto segue a arquitetura Clean Architecture com as seguintes camadas:
+O projeto é dividido em duas partes principais: backend e frontend, ambos seguindo princípios de Clean Architecture.
+
+### Backend
 
 ```
 backend/
@@ -33,18 +46,47 @@ backend/
 └── ControleGastosResidenciais.Infrastructure/ # Camada de Infraestrutura (Data Access)
 ```
 
-### Responsabilidades das Camadas
+**Responsabilidades das Camadas (Backend):**
 
 - **Api**: Recebe requisições HTTP, valida entrada de dados e retorna respostas formatadas
 - **Application**: Implementa casos de uso, orquestra lógica de negócio e coordena operações entre camadas
 - **Domain**: Define entidades do domínio, implementa regras de negócio e mantém independência de frameworks
 - **Infrastructure**: Implementa persistência de dados, configura Entity Framework e gerencia contexto do banco
 
+### Frontend
+
+```
+frontend/controle-gastos-residenciais-web/
+├── src/
+│   ├── components/      # Componentes React reutilizáveis (Presentation Layer)
+│   ├── pages/          # Páginas/telas da aplicação (Presentation Layer)
+│   ├── routes/         # Configuração de rotas
+│   ├── services/       # Serviços de comunicação com API (Infrastructure Layer)
+│   ├── hooks/          # Hooks customizados React (Application Layer)
+│   ├── types/          # Definições de tipos TypeScript (Domain Layer)
+│   ├── utils/          # Funções utilitárias puras (Domain Layer)
+│   └── styles/         # Estilos globais
+├── public/             # Arquivos públicos estáticos
+└── index.html          # HTML principal
+```
+
+**Responsabilidades das Camadas (Frontend):**
+
+- **Presentation (components/pages)**: Componentes visuais puros, layouts e estruturas de página
+- **Application (hooks)**: Orquestração de lógica de negócio, gerenciamento de estado, integração entre UI e serviços
+- **Domain (types/utils)**: Interfaces TypeScript, modelos de dados, validações, funções puras
+- **Infrastructure (services)**: Chamadas HTTP, configuração de interceptors, tratamento de erros
+
 ## 📦 Pré-requisitos
 
+### Backend
 - [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 - [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) ou [Visual Studio Code](https://code.visualstudio.com/) (opcional)
+
+### Frontend
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
 ## ⚙️ Configuração
 
@@ -52,12 +94,14 @@ backend/
 
 ```bash
 git clone https://github.com/Lucas-RM/controle-gastos-residenciais.git
-cd controle-gastos-residenciais/backend
+cd controle-gastos-residenciais
 ```
 
-### 2. Configure a String de Conexão
+### 2. Configuração do Backend
 
-Edite o arquivo `ControleGastosResidenciais.Api/appsettings.json` e ajuste a connection string conforme seu ambiente:
+#### 2.1. Configure a String de Conexão
+
+Edite o arquivo `backend/ControleGastosResidenciais.Api/appsettings.json` e ajuste a connection string conforme seu ambiente:
 
 ```json
 {
@@ -67,13 +111,14 @@ Edite o arquivo `ControleGastosResidenciais.Api/appsettings.json` e ajuste a con
 }
 ```
 
-### 3. Restaure as dependências
+#### 2.2. Restaure as dependências
 
 ```bash
+cd backend
 dotnet restore
 ```
 
-### 4. Aplique as Migrations
+#### 2.3. Aplique as Migrations
 
 As migrations são aplicadas automaticamente quando a aplicação é executada em modo de desenvolvimento. Se preferir aplicar manualmente:
 
@@ -82,24 +127,57 @@ cd ControleGastosResidenciais.Api
 dotnet ef database update --project ../ControleGastosResidenciais.Infrastructure
 ```
 
+### 3. Configuração do Frontend
+
+#### 3.1. Instale as dependências
+
+```bash
+cd frontend/controle-gastos-residenciais-web
+npm install
+```
+
+#### 3.2. Configure a URL da API (Opcional)
+
+Por padrão, o frontend está configurado para usar `http://localhost:5021` como URL da API. Se necessário, você pode criar um arquivo `.env` na raiz do projeto frontend:
+
+```env
+VITE_API_URL=http://localhost:5021
+```
+
 ## 🚀 Executando o Projeto
 
-### Via Visual Studio
+### Backend
 
-1. Abra o arquivo `ControleGastosResidenciais.sln`
+#### Via Visual Studio
+
+1. Abra o arquivo `backend/ControleGastosResidenciais.sln`
 2. Defina `ControleGastosResidenciais.Api` como projeto de inicialização
 3. Pressione `F5` ou clique em "Executar"
 
-### Via Terminal
+#### Via Terminal
 
 ```bash
-cd ControleGastosResidenciais.Api
+cd backend/ControleGastosResidenciais.Api
 dotnet run
 ```
 
 A API estará disponível em:
 - **HTTP**: `http://localhost:5021`
 - **HTTPS**: `https://localhost:7199`
+
+### Frontend
+
+#### Via Terminal
+
+```bash
+cd frontend/controle-gastos-residenciais-web
+npm run dev
+```
+
+A aplicação frontend estará disponível em:
+- **URL**: `http://localhost:3000`
+
+> **Nota**: Certifique-se de que o backend está em execução antes de iniciar o frontend, pois a aplicação web precisa se comunicar com a API.
 
 ## 📚 Endpoints da API
 
@@ -258,24 +336,53 @@ Consulta totais por categoria.
 
 ## 🐛 Solução de problemas
 
-### Erro de conexão com o banco de dados
+### Backend
+
+#### Erro de conexão com o banco de dados
 
 Verifique se:
 - O SQL Server está em execução
 - A connection string está correta no `appsettings.json`
 - Você tem permissões para criar bancos de dados
 
-### Erro ao aplicar migrations
+#### Erro ao aplicar migrations
 
 Execute manualmente:
 ```bash
-cd ControleGastosResidenciais.Api
+cd backend/ControleGastosResidenciais.Api
 dotnet ef database update --project ../ControleGastosResidenciais.Infrastructure
 ```
 
-### Porta já em uso
+#### Porta já em uso
 
 Altere a porta no arquivo `Properties/launchSettings.json` ou encerre o processo que está usando a porta.
+
+### Frontend
+
+#### Erro de conexão com a API
+
+Verifique se:
+- O backend está em execução
+- A URL da API está correta no arquivo `.env` ou `vite.config.ts`
+- Não há problemas de CORS (o backend deve estar configurado para aceitar requisições do frontend)
+
+#### Erro ao instalar dependências
+
+Tente limpar o cache e reinstalar:
+```bash
+cd frontend/controle-gastos-residenciais-web
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### Porta 3000 já em uso
+
+Altere a porta no arquivo `vite.config.ts`:
+```typescript
+server: {
+  port: 3001, // ou outra porta disponível
+}
+```
 
 ## Arquivos do Postman
 

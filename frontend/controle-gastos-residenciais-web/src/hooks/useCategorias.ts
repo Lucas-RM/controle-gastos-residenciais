@@ -23,14 +23,10 @@ export function useCategorias() {
   };
 
   const createCategoria = async (data: CategoriaCreateDto) => {
-    try {
-      const newCategoria = await categoriaService.create(data);
-      setCategorias((prev) => [...prev, newCategoria]);
-      toast.success('Categoria criada com sucesso!');
-      return newCategoria;
-    } catch (err) {
-      throw err;
-    }
+    const newCategoria = await categoriaService.create(data);
+    setCategorias((prev) => [...prev, newCategoria]);
+    toast.success('Categoria criada com sucesso!');
+    return newCategoria;
   };
 
   const getCategoriasByFinalidade = (finalidade: Finalidade): Categoria[] => {

@@ -23,14 +23,10 @@ export function useTransacoes() {
   };
 
   const createTransacao = async (data: TransacaoCreateDto) => {
-    try {
-      const newTransacao = await transacaoService.create(data);
-      setTransacoes((prev) => [...prev, newTransacao]);
-      toast.success('Transação criada com sucesso!');
-      return newTransacao;
-    } catch (err) {
-      throw err;
-    }
+    const newTransacao = await transacaoService.create(data);
+    setTransacoes((prev) => [...prev, newTransacao]);
+    toast.success('Transação criada com sucesso!');
+    return newTransacao;
   };
 
   useEffect(() => {

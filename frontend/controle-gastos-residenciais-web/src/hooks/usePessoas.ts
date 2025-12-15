@@ -23,24 +23,16 @@ export function usePessoas() {
   };
 
   const createPessoa = async (data: PessoaCreateDto) => {
-    try {
-      const newPessoa = await pessoaService.create(data);
-      setPessoas((prev) => [...prev, newPessoa]);
-      toast.success('Pessoa criada com sucesso!');
-      return newPessoa;
-    } catch (err) {
-      throw err;
-    }
+    const newPessoa = await pessoaService.create(data);
+    setPessoas((prev) => [...prev, newPessoa]);
+    toast.success('Pessoa criada com sucesso!');
+    return newPessoa;
   };
 
   const deletePessoa = async (id: string) => {
-    try {
-      await pessoaService.delete(id);
-      setPessoas((prev) => prev.filter((p) => p.id !== id));
-      toast.success('Pessoa deletada com sucesso!');
-    } catch (err) {
-      throw err;
-    }
+    await pessoaService.delete(id);
+    setPessoas((prev) => prev.filter((p) => p.id !== id));
+    toast.success('Pessoa deletada com sucesso!');
   };
 
   useEffect(() => {

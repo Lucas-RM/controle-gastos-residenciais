@@ -57,11 +57,11 @@ export function Transacoes() {
           categoriaSelecionada &&
           !isCategoriaCompatible(categoriaSelecionada.finalidade, formData.tipo)
         ) {
-          setFormData({ ...formData, categoriaId: '' });
+          setFormData((prev) => ({ ...prev, categoriaId: '' }));
         }
       }
     }
-  }, [formData.tipo, categorias]);
+  }, [formData.tipo, formData.categoriaId, categorias]);
 
   const handleOpenModal = () => {
     setFormData({
